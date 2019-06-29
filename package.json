@@ -1,0 +1,22 @@
+{
+  "name": "react-native-react-native-android-serialport-tool-v2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react-native"
+  ],
+  "author": "",
+  "license": "",
+  "peerDependencies": {
+    "react-native": "^0.41.2",
+    "react-native-windows": "0.41.0-rc.1"
+  },
+  "dependencies": {
+    "global": "^4.3.2",
+    "react-native-create-library": "^3.1.2"
+  }
+}
