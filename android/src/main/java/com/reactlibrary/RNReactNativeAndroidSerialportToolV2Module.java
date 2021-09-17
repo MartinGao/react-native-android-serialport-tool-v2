@@ -32,6 +32,7 @@ public class RNReactNativeAndroidSerialportToolV2Module extends ReactContextBase
   private final ReactApplicationContext reactContext;
   private byte[] buffer;
   private String cache = "init";
+
   private ArrayList<String> cacheArray = new ArrayList<String>();
 
   public RNReactNativeAndroidSerialportToolV2Module(ReactApplicationContext reactContext) {
@@ -76,7 +77,22 @@ public class RNReactNativeAndroidSerialportToolV2Module extends ReactContextBase
     //   promise.resolve("HAS DEVICE :" + String.valueOf(devices.length) + builder.toString());
     //   this.startSerialPortConnect();
     // }
-    this.startSerialPortConnect();
+    // this.startSerialPortConnect();
+  }
+
+  @ReactMethod
+  public void init(String targetPort, int bitRate, final Promise promise) {
+    // SerialPortFinder serialPortFinder = new SerialPortFinder();
+    // String[] devices = serialPortFinder.getAllDevicesPath();
+    // if (devices == null) { 
+    //   promise.resolve("NO DEVICE"); 
+    // } else {
+    //   StringBuilder builder = new StringBuilder();
+    //   for(String s : devices) { builder.append(s); }
+    //   promise.resolve("HAS DEVICE :" + String.valueOf(devices.length) + builder.toString());
+    //   this.startSerialPortConnect();
+    // }
+    this.startSerialPortConnect(targetPort, bitRate);
   }
 
   @ReactMethod
@@ -129,10 +145,11 @@ public class RNReactNativeAndroidSerialportToolV2Module extends ReactContextBase
 // 5AA501FF0100000000000303
 
   //1.开始串口连接
-  private void startSerialPortConnect() {
+  private void startSerialPortConnect(String targetPort, int bitRate) {
       //配置串口参数
       // SerialPortUtil serialPortUtil = new SerialPortUtil(reactContext.getCurrentActivity(), new SerialPortConfig("/dev/ttyS3", 9600));
-      SerialPortUtil serialPortUtil = new SerialPortUtil(reactContext.getCurrentActivity(), new SerialPortConfig("/dev/ttyS0", 19200));
+      // SerialPortUtil serialPortUtil = new SerialPortUtil(reactContext.getCurrentActivity(), new SerialPortConfig("/dev/ttyS0", 19200));
+      SerialPortUtil serialPortUtil = new SerialPortUtil(reactContext.getCurrentActivity(), new SerialPortConfig(targetPort, bitRate));
       //绑定串口服务
       serialPortUtil.bindService();
       SerialRead serial0Read = new SerialRead(reactContext.getCurrentActivity());
