@@ -171,16 +171,37 @@ public class RNReactNativeAndroidSerialportToolV2Module extends ReactContextBase
       } 
     }
 
+    // public String checkCacheArray() {
+    //   String foo =  TextUtils.join("", cacheArray);
+    //   Log.i("Serial", "checkCacheArray at begin " + " foo: " + foo + " size: " + foo.length());
+    //   if (foo.length() < 10) {
+    //     return "STOP";
+    //   } else {
+    //     String head = foo.substring(0, 2);
+    //     String tail = foo.substring(foo.length() - 8);
+    //     Log.i("Serial", "checkCacheArray " + " foo: " + foo + " head: " + head + " tail: " + tail);
+    //     if (head.equals("AA") && tail.equals("CC33C33C")) {
+    //       Log.i("Serial", "checkCacheArray GOOD" + " return foo: " + foo);
+    //       cacheArray.clear();
+    //       return foo;
+    //     } else {
+    //       Log.i("Serial", "checkCacheArray NOT GOOD???");
+    //       return "STOP";
+    //     }
+    //   }
+    // }
+
+    // 瀚擎
     public String checkCacheArray() {
       String foo =  TextUtils.join("", cacheArray);
       Log.i("Serial", "checkCacheArray at begin " + " foo: " + foo + " size: " + foo.length());
-      if (foo.length() < 10) {
+      if (foo.length() < 18 * 2) {
         return "STOP";
       } else {
-        String head = foo.substring(0, 2);
-        String tail = foo.substring(foo.length() - 8);
+        String head = foo.substring(0, 2 * 2);
+        String tail = foo.substring(foo.length() - 2 * 2);
         Log.i("Serial", "checkCacheArray " + " foo: " + foo + " head: " + head + " tail: " + tail);
-        if (head.equals("AA") && tail.equals("CC33C33C")) {
+        if (head.equals("5AA5") && tail.substring(0, 2 * 1).equals("03")) {
           Log.i("Serial", "checkCacheArray GOOD" + " return foo: " + foo);
           cacheArray.clear();
           return foo;
